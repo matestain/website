@@ -1,0 +1,22 @@
+# Node / Next.js (for when the stack evolves)
+node_modules/
+.next/
+out/
+dist/
+.vercel/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
