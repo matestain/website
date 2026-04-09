@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATESTAIN — Coming Soon</title>
+<meta name="description" content="Modernizing Automation Through Engineering — Software Trusted Across Industries & Nations">
+<meta property="og:title" content="MATESTAIN">
+<meta property="og:description" content="Modernizing Automation Through Engineering — Software Trusted Across Industries & Nations">
+<meta property="og:url" content="https://matestain.com">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:  #2D4A1E;
+    --green-mid:   #3D6128;
+    --olive-gold:  #8B7D2A;
+    --olive-light: #A89535;
+    --cream:       #F5F0E8;
+    --cream-dark:  #EDE6D6;
+    --black:       #0D0D0D;
+    --gray:        #7A7A6E;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    background: var(--cream);
+    color: var(--black);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.6;
+  }
+
+  /* STAIN BACKGROUND */
+  .stain-bg {
+    position: fixed;
+    top: -15vh;
+    right: -10vw;
+    width: 65vw;
+    height: 70vh;
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 0;
+    animation: stain-drift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes stain-drift {
+    from { transform: rotate(-8deg) scale(1); }
+    to   { transform: rotate(-5deg) scale(1.04); }
+  }
+
+  .stain-bg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* LAYOUT */
+  .page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(32px, 6vw, 80px) clamp(24px, 8vw, 120px);
+  }
+
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: fade-up 0.8s ease both;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 28px;
+    width: auto;
+    display: block;
+    animation: fade-up 0.8s ease both 0.2s;
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--olive-gold);
+    text-transform: uppercase;
+  }
+
+  /* MAIN */
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(48px, 8vh, 100px) 0;
+    max-width: 820px;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--olive-gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fade-up 0.8s ease both 0.15s;
+  }
+
+  .eyebrow span {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--olive-gold);
+    vertical-align: middle;
+    margin-right: 12px;
+    transform: translateY(-1px);
+  }
+
+  .headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(72px, 12vw, 148px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -2px;
+    color: var(--green-dark);
+    margin-bottom: 40px;
+    animation: fade-up 0.8s ease both 0.25s;
+  }
+
+  .headline em {
+    font-style: normal;
+    color: var(--olive-gold);
+    position: relative;
+  }
+
+  .tagline {
+    font-size: clamp(14px, 1.6vw, 17px);
+    color: var(--gray);
+    line-height: 1.75;
+    max-width: 520px;
+    margin-bottom: 56px;
+    animation: fade-up 0.8s ease both 0.35s;
+  }
+
+  .tagline strong {
+    color: var(--green-dark);
+    font-weight: 600;
+  }
+
+  /* FORM */
+  .form-wrapper {
+    animation: fade-up 0.8s ease both 0.45s;
+  }
+
+  .form-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+  }
+
+  .form-input {
+    flex: 1;
+    padding: 14px 20px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    background: var(--cream-dark);
+    border: 1.5px solid transparent;
+    border-right: none;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder {
+    color: var(--gray);
+    opacity: 0.6;
+  }
+
+  .form-input:focus {
+    border-color: var(--olive-gold);
+    background: #fff;
+  }
+
+  .form-btn {
+    padding: 14px 28px;
+    background: var(--green-dark);
+    color: var(--cream);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1.5px solid var(--green-dark);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+
+  .form-btn:hover {
+    background: var(--olive-gold);
+    border-color: var(--olive-gold);
+  }
+
+  .form-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 12px;
+    opacity: 0.7;
+  }
+
+  .form-success {
+    display: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--green-dark);
+    letter-spacing: 0.05em;
+    padding: 14px 0;
+  }
+
+  .form-success::before {
+    content: '✓ ';
+    color: var(--olive-gold);
+    font-weight: 700;
+  }
+
+  /* FOOTER */
+  footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 1px solid var(--cream-dark);
+    animation: fade-up 0.8s ease both 0.55s;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-vision {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--green-dark);
+    text-transform: uppercase;
+    max-width: 420px;
+    line-height: 1.5;
+  }
+
+  .footer-vision em {
+    color: var(--olive-gold);
+    font-style: normal;
+  }
+
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-align: right;
+    line-height: 1.8;
+    opacity: 0.7;
+  }
+
+  /* VERTICAL RULE */
+  .v-rule {
+    position: fixed;
+    top: 0;
+    left: clamp(24px, 8vw, 120px);
+    width: 1px;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent, var(--cream-dark) 20%, var(--cream-dark) 80%, transparent);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .header-label { display: none; }
+    .form-row { flex-direction: column; }
+    .form-input { border-right: 1.5px solid transparent; border-bottom: none; }
+    .form-input:focus { border-color: var(--olive-gold); }
+    .form-btn { width: 100%; text-align: center; }
+    .footer-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND STAIN -->
+<div class="stain-bg" aria-hidden="true">
+  <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+    <path d="M280 30 C320 10, 400 40, 430 90 C465 145, 470 200, 450 255 C428 315, 390 360, 330 385 C265 412, 185 408, 130 375 C72 340, 40 275, 38 210 C35 140, 65 75, 120 45 C165 20, 235 52, 280 30 Z" fill="#2D4A1E"/>
+    <path d="M60 180 C50 155, 55 130, 38 110 C25 93, 15 105, 20 125 C26 148, 42 162, 60 180 Z" fill="#2D4A1E"/>
+    <path d="M440 310 C460 325, 478 318, 482 300 C486 280, 472 268, 455 275 C440 282, 435 298, 440 310 Z" fill="#2D4A1E"/>
+    <path d="M350 395 C365 410, 375 405, 372 392 C369 378, 358 374, 350 382 Z" fill="#2D4A1E"/>
+  </svg>
+</div>
+
+<div class="v-rule" aria-hidden="true"></div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <picture>
+        <source srcset="assets/logo.svg" type="image/svg+xml">
+        <img src="assets/logo.png" alt="MATESTAIN" class="logo-img">
+      </picture>
+    </div>
+    <div class="header-label">Coming Soon</div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="eyebrow"><span></span>Field Engineering &amp; Industrial Software</div>
+
+    <h1 class="headline">Something<br>is being<br><em>forged.</em></h1>
+
+    <p class="tagline">
+      <strong>MATESTAIN</strong> is a field engineering and industrial software company.<br>
+      Modernizing automation through engineering —
+      software trusted across industries &amp; nations.
+    </p>
+
+    <div class="form-wrapper">
+      <label class="form-label" for="email-input">Get notified when we launch</label>
+      <div class="form-row">
+        <input
+          id="email-input"
+          class="form-input"
+          type="email"
+          placeholder="your@email.com"
+          autocomplete="email"
+        />
+        <button class="form-btn" onclick="handleSubmit()">Notify me</button>
+      </div>
+      <div class="form-success" id="form-success">
+        You're on the list. We'll be in touch.
+      </div>
+      <p class="form-note">No spam. Just one email when we're ready.</p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-vision">
+      Modernizing Automation Through Engineering —<br>
+      <em>Software Trusted Across Industries &amp; Nations</em>
+    </div>
+    <div class="footer-meta">
+      matestain.com<br>
+      hello@matestain.com<br>
+      © 2026 MATESTAIN
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  async function handleSubmit() {
+    const input = document.getElementById('email-input');
+    const btn = document.querySelector('.form-btn');
+    const success = document.getElementById('form-success');
+    const note = document.querySelector('.form-note');
+    const val = input.value.trim();
+
+    if (!val || !val.includes('@')) {
+      input.style.borderColor = '#C0392B';
+      input.focus();
+      setTimeout(() => input.style.borderColor = '', 1500);
+      return;
+    }
+
+    btn.textContent = '...';
+    btn.disabled = true;
+    input.disabled = true;
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: val }),
+      });
+
+      if (res.ok) {
+        document.querySelector('.form-row').style.display = 'none';
+        note.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'NOTIFY ME';
+        btn.disabled = false;
+        input.disabled = false;
+        input.style.borderColor = '#C0392B';
+        setTimeout(() => input.style.borderColor = '', 2000);
+      }
+    } catch {
+      btn.textContent = 'NOTIFY ME';
+      btn.disabled = false;
+      input.disabled = false;
+    }
+  }
+
+  // Allow Enter key
+  document.getElementById('email-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+
+</body>
+</html>
