@@ -10,25 +10,30 @@ This repo will become the public landing page for `matestain.com`. It represents
 
 ## Current Status
 
-**Not built yet.** This is a placeholder structure. Do not write production code here until development is formally started. If you're here, you're likely setting up the repo or planning.
+**Live landing page** at https://matestain.com — minimal HTML/CSS, visual style aligned with the brand guide. Functional email drop. Website v1 (full site) is still pending development.
 
-## Planned Stack
+### Live infrastructure
 
-- **Phase 1:** Plain HTML and CSS — static, zero dependencies, deployable to any CDN or static host
+- **Hosting:** Cloudflare Pages, Git-connected to `main` branch, auto-deploy on push
+- **Email drop:** Cloudflare Function at `/api/subscribe` → Resend API
+  - Audience: `matestain`, Segment: `General`
+  - Env vars required in Cloudflare Pages: `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`
+
+### Website v1 — Planned Stack
+
+- **Phase 1:** Plain HTML and CSS — static, zero dependencies
 - **Phase 2 (if needed):** Next.js — only if dynamic rendering, routing, or API integration becomes necessary
 
 Do not introduce a framework prematurely. Start with the simplest thing that works.
 
-## Placeholder Structure
+## Current Structure
 
 ```
 website/
-├── index.html        # Main entry point (placeholder)
-├── style.css         # Base styles (placeholder)
+├── index.html        # Landing page
+├── style.css         # Base styles
 └── assets/           # Static assets (images, fonts, etc.)
 ```
-
-This will evolve once development begins. Don't over-engineer the structure before there's real content.
 
 ## Design Direction
 
